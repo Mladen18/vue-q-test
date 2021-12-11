@@ -18,6 +18,9 @@ export default {
     posts: {
       type: Array,
       required: true,
+      validator: function (value) {
+        return value === [] || value.length >= 0;
+      },
     },
   },
 };

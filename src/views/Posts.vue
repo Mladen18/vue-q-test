@@ -1,6 +1,14 @@
 <template>
   <section class="s-posts">
-    <PostList :posts="posts" />
+    <div class="c-search">
+      <input
+        v-model="searchText"
+        class="c-search"
+        type="text"
+        placeholder="Search..."
+      />
+    </div>
+    <PostList :posts="searchedPosts" />
   </section>
 </template>
 
@@ -16,7 +24,21 @@ export default {
   data() {
     return {
       posts: [],
+      searchText: "",
     };
+  },
+  computed: {
+    searchedPosts() {
+      if (this.searchText) {
+        return this.posts.filter((post) => {
+          return post.title
+            .toLowerCase()
+            .includes(this.searchText.toLowerCase());
+        });
+      } else {
+        return this.posts;
+      }
+    },
   },
   created() {
     // ON CREATED GET POSTS IF EMPTY
@@ -38,5 +60,13 @@ export default {
 <style scoped lang="scss">
 .s-posts {
   margin: 10px 15px;
+}
+.c-input {
+  &__input {
+    padding: 10px 15px;
+    color: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+  }
 }
 </style>
