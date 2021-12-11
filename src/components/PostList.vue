@@ -1,6 +1,9 @@
 <template>
   <div class="postList">
-    <h1>{{ msg }}</h1>
+    <ul v-for="post in posts" :key="post.id">
+      <li>Title: {{ post.title }}</li>
+      <li>Body: {{ post.body }}</li>
+    </ul>
   </div>
 </template>
 
@@ -8,7 +11,10 @@
 export default {
   name: "PostList",
   props: {
-    msg: String,
+    posts: {
+      type: Array,
+      required: true,
+    },
   },
 };
 </script>

@@ -1,6 +1,11 @@
 <template>
-  <router-link to="/posts">Posts</router-link>
-  <router-view />
+  <header>
+    <router-link to="/posts">Posts</router-link>
+  </header>
+  <article>
+    <router-view />
+  </article>
+  <footer>Copy Mladen</footer>
 </template>
 
 <style lang="scss">

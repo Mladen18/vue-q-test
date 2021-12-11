@@ -1,6 +1,6 @@
 <template>
   <section class="home">
-    <PostList msg="Welcome to Your Vue.js App" />
+    <PostList :posts="posts" />
   </section>
 </template>
 
@@ -12,6 +12,23 @@ export default {
   name: "Posts",
   components: {
     PostList,
+  },
+  data() {
+    return {
+      posts: [],
+    };
+  },
+  created() {
+    if (this.posts.length === 0) {
+      this.getPosts();
+    }
+  },
+  methods: {
+    getPosts() {
+      fetch("https://jsonplaceholder.typicode.com/posts")
+        .then((response) => response.json())
+        .then((json) => (this.posts = json));
+    },
   },
 };
 </script>

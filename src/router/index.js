@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Posts from "../views/Posts.vue";
 
 // 404
-import NotFound from '../views/NotFound.vue';
+import NotFound from "../views/NotFound.vue";
 
 const routes = [
   {
@@ -19,7 +19,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/SinglePost.vue"),
   },
-  { path: '/:notFound(.*)', component: NotFound, name: 'NotFound' }
+  { path: "/:notFound(.*)", component: NotFound, name: "NotFound" },
 ];
 
 const router = createRouter({
