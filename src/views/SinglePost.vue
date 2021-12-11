@@ -1,15 +1,8 @@
-<template>
-  <section class="s-singlePost">
-    <h1>Post: {{ postId }}</h1>
-    <div class="c-post">
-      <h4>{{ title }}</h4>
-      <p>{{ text }}</p>
-    </div>
-  </section>
-</template>
-
 <script>
+import { h } from "vue";
+
 export default {
+  name: "SinglePost",
   data() {
     return {
       post: {},
@@ -45,12 +38,18 @@ export default {
         .then((json) => (this.post = json));
     },
   },
+  // RENDER tempalte
+  render({ postId, title, text }) {
+    return h("section", { class: "s-singlePost" }, [
+      h("h1", {}, "Post: " + postId),
+      h("div", { class: "c-post" }, [h("h4", title), h("p", text)]),
+    ]);
+  },
 };
 </script>
-
 <style scoped lang="scss">
 .s-singlePost {
-  margin: 30px;
+  margin: 30px 15px;
 }
 .c-post {
   display: flex;
@@ -58,7 +57,7 @@ export default {
   justify-content: center;
   background: #cce5ff;
   max-width: 600px;
-  width: 100%;
+  width: auto;
   height: 350px;
   padding: 5px 10px;
   margin: 0 auto;

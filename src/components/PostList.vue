@@ -1,6 +1,9 @@
 <template>
   <div class="c-postList">
-    <ul class="c-postList__items">
+    <div v-if="hasPosts">
+      <p>No posts found</p>
+    </div>
+    <ul v-else class="c-postList__items">
       <li v-for="post in posts" :key="post.id" class="c-postList__item">
         <router-link :to="`/post/${post.id}`" class="c-postList__link">
           <h4>{{ post.title }}</h4>
@@ -21,6 +24,12 @@ export default {
       validator: function (value) {
         return value === [] || value.length >= 0;
       },
+    },
+  },
+  computed: {
+    // Check if has posts
+    hasPosts() {
+      return this.posts.length <= 0;
     },
   },
 };
@@ -50,6 +59,10 @@ export default {
   &__link {
     color: #000;
     text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

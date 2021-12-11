@@ -1,11 +1,11 @@
 <template>
   <header>
-    <router-link to="/posts">Posts</router-link>
+    <BaseLink title="Posts" link="/posts" />
   </header>
   <article class="main">
     <router-view />
   </article>
-  <footer>Copy Mladen</footer>
+  <footer><p>Footer Copy Mladen</p></footer>
 </template>
 
 <style lang="scss">
@@ -15,7 +15,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin: 30px 15px;
 }
 
 body {
@@ -25,5 +24,24 @@ body {
 
 .main {
   margin: 50px 0;
+}
+
+header {
+  height: 50px;
+  width: 100%;
+  background-color: #2c3e50;
+  padding: 10px 0;
+}
+
+footer {
+  height: 20px;
+  width: 100%;
+
+  p {
+    background-color: #d7cfcf;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
 }
 </style>

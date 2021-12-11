@@ -3,7 +3,7 @@
     <div class="c-search">
       <input
         v-model="searchText"
-        class="c-search"
+        class="c-search__input"
         type="text"
         placeholder="Search..."
       />
@@ -59,9 +59,9 @@ export default {
 
 <style scoped lang="scss">
 .s-posts {
-  margin: 10px 15px;
+  margin: 0 15px;
 }
-.c-input {
+.c-search {
   &__input {
     padding: 10px 15px;
     color: rgba(0, 0, 0, 0.7);

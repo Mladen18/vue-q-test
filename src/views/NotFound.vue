@@ -5,3 +5,8 @@
     <router-link to="/posts">Go back to Posts</router-link>
   </section>
 </template>
+<script>
+export default {
+  name: "NotFound",
+};
+</script>
