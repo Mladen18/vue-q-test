@@ -1,5 +1,5 @@
 <template>
-  <section class="home">
+  <section class="s-posts">
     <PostList :posts="posts" />
   </section>
 </template>
@@ -19,11 +19,13 @@ export default {
     };
   },
   created() {
+    // ON CREATED GET POSTS IF EMPTY
     if (this.posts.length === 0) {
       this.getPosts();
     }
   },
   methods: {
+    // FETCH ALL POSTS FROM API
     getPosts() {
       fetch("https://jsonplaceholder.typicode.com/posts")
         .then((response) => response.json())
@@ -32,3 +34,9 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.s-posts {
+  margin: 10px 15px;
+}
+</style>
