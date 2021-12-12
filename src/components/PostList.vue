@@ -18,6 +18,14 @@
 export default {
   name: "PostList",
   props: {
+    message: {
+      type: String,
+      required: true,
+      default: "Hello",
+      validator: function (value) {
+        return value !== "";
+      },
+    },
     posts: {
       type: Array,
       required: true,
@@ -31,6 +39,10 @@ export default {
     hasPosts() {
       return this.posts.length <= 0;
     },
+  },
+  created() {
+    // Log component name
+    console.log(this.message + this.$options.name);
   },
 };
 </script>

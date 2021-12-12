@@ -1,13 +1,12 @@
 <template>
-  <section class="s-notFound">
-    <h2>Page not found</h2>
-    <h4>This page could not be found 404</h4>
-    <router-link to="/posts">Go back to Posts</router-link>
-  </section>
+  <header>
+    <BaseLink title="Posts" link="/posts" :message="message" />
+  </header>
 </template>
+
 <script>
 export default {
-  name: "NotFound",
+  name: "TheHeader",
   props: {
     message: {
       type: String,
@@ -19,7 +18,7 @@ export default {
     },
   },
   created() {
-    // LOg component name
+    // Log component name
     console.log(this.message + this.$options.name);
   },
 };

@@ -9,10 +9,12 @@ const routes = [
     path: "/posts",
     name: "Posts",
     component: Posts,
+    props: true,
   },
   {
     path: "/post/:id",
     name: "SinglePost",
+    props: true,
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.

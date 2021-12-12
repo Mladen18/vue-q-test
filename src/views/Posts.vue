@@ -8,7 +8,7 @@
         placeholder="Search..."
       />
     </div>
-    <PostList :posts="searchedPosts" />
+    <PostList :posts="searchedPosts" :message="message" />
   </section>
 </template>
 
@@ -20,6 +20,16 @@ export default {
   name: "Posts",
   components: {
     PostList,
+  },
+  props: {
+    message: {
+      type: String,
+      required: true,
+      default: "Hello",
+      validator: function (value) {
+        return value !== "";
+      },
+    },
   },
   data() {
     return {
@@ -45,6 +55,8 @@ export default {
     if (this.posts.length === 0) {
       this.getPosts();
     }
+    // Log component name
+    console.log(this.message + this.$options.name);
   },
   methods: {
     // FETCH ALL POSTS FROM API

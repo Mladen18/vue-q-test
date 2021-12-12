@@ -6,20 +6,32 @@
 export default {
   name: "BaseLink",
   props: {
+    message: {
+      type: String,
+      required: true,
+      default: "Hello",
+      validator: function (value) {
+        return value !== "";
+      },
+    },
     link: {
       type: String,
       required: true,
       validator: function (value) {
-        return typeof value;
+        return value !== "";
       },
     },
     title: {
       type: String,
       required: true,
       validator: function (value) {
-        return typeof value;
+        return value !== "";
       },
     },
+  },
+  created() {
+    // Log component name
+    console.log(this.message + this.$options.name);
   },
 };
 </script>

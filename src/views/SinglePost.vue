@@ -3,6 +3,16 @@ import { h } from "vue";
 
 export default {
   name: "SinglePost",
+  props: {
+    message: {
+      type: String,
+      required: true,
+      default: "Hello",
+      validator: function (value) {
+        return value !== "";
+      },
+    },
+  },
   data() {
     return {
       post: {},
@@ -25,6 +35,8 @@ export default {
     if (this.post) {
       this.getPost();
     }
+    // Log component name
+    console.log(this.message + this.$options.name);
   },
   methods: {
     // FETCH POST - USING ROUTE ID

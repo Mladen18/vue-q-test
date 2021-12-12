@@ -1,12 +1,20 @@
 <template>
-  <header>
-    <BaseLink title="Posts" link="/posts" />
-  </header>
+  <TheHeader :message="propMessage" />
   <article class="main">
-    <router-view />
+    <router-view :message="propMessage" />
   </article>
-  <footer><p>Footer Copy Mladen</p></footer>
+  <TheFooter :message="propMessage" />
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      propMessage: "Hello from ",
+    };
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
