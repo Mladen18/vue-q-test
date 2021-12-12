@@ -1,5 +1,6 @@
 <script>
 import { h } from "vue";
+import Api from "../services/api.js";
 
 export default {
   name: "SinglePost",
@@ -40,14 +41,17 @@ export default {
   },
   methods: {
     // FETCH POST - USING ROUTE ID
-    getPost() {
+    async getPost() {
       if (!this.postId) {
         return;
       }
-
-      fetch("https://jsonplaceholder.typicode.com/posts/" + this.postId)
-        .then((response) => response.json())
-        .then((json) => (this.post = json));
+      Api.getPost(this.postId)
+        .then((result) => {
+          this.post = result;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
   // RENDER tempalte

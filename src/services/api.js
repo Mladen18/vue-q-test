@@ -1,17 +1,12 @@
-const url = "https://jsonplaceholder.typicode.com/posts";
+const url = "https://jsonplaceholder.typicode.com/posts/";
 
 const Api = {
-
-  getPosts(item) {
-    fetch(url)
-      .then((response) => response.json())
-      .then((json) => (item = json));
+  getPosts() {
+    return fetch(url).then((response) => response.json());
   },
 
-  getPost(item, id) {
-    fetch(url + id)
-      .then((response) => response.json())
-      .then((json) => (item = json));
+  getPost(id) {
+    return fetch(url + id).then((response) => response.json());
   },
 };
 

@@ -15,6 +15,7 @@
 <script>
 // @ is an alias to /src
 import PostList from "@/components/PostList.vue";
+import Api from "@/services/api.js";
 
 export default {
   name: "Posts",
@@ -52,18 +53,21 @@ export default {
   },
   created() {
     // ON CREATED GET POSTS IF EMPTY
-    if (this.posts.length === 0) {
-      this.getPosts();
-    }
+    this.fetchPosts();
+
     // Log component name
     console.log(this.message + this.$options.name);
   },
   methods: {
     // FETCH ALL POSTS FROM API
-    getPosts() {
-      fetch("https://jsonplaceholder.typicode.com/posts")
-        .then((response) => response.json())
-        .then((json) => (this.posts = json));
+    async fetchPosts() {
+      Api.getPosts()
+        .then((result) => {
+          this.posts = result;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
