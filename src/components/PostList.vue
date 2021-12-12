@@ -1,6 +1,6 @@
 <template>
   <div class="c-postList">
-    <div v-if="hasPosts">
+    <div v-if="hasPosts" class="c-postList__noItems">
       <p>No posts found</p>
     </div>
     <ul v-else class="c-postList__items">
@@ -37,6 +37,9 @@ export default {
   computed: {
     // Check if has posts
     hasPosts() {
+      if (!this.posts) {
+        return;
+      }
       return this.posts.length <= 0;
     },
   },
